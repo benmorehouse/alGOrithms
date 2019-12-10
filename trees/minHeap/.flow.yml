@@ -5,8 +5,9 @@ default:
 
                 clear
 
-                cd ~/repositories/alGOrithms/lists/stack
+                cd ~/repositories/alGOrithms/trees/minHeap
                 go build
-                ./stack
+                ./minHeap
+
 
 

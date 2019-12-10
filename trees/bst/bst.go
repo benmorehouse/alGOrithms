@@ -1,23 +1,23 @@
-package BST
+package bst
 
 import(
 	"errors"
 	"fmt"
 )
 
-type node struct{
+type Node struct{
 	Priority int
-	Right *node
-	Left *node
+	Right *Node
+	Left *Node
 }
 
-func (head *node) Insert(i interface{}) error{
+func (head *Node) Insert(i interface{}) error{
 	input, err := i.(int) // type assertion for input into function..
 	if err != true{
 		return errors.New("Error: type assertion returned false")
 	}
 
-	newNode := node{
+	newNode := Node{
 		Priority: input,
 	}
 
@@ -47,7 +47,7 @@ func (head *node) Insert(i interface{}) error{
 	return nil
 }
 
-func (head *node) Search(i interface{}) error{ // this should probably just return the node itself
+func (head *Node) Search(i interface{}) error{ // this should probably just return the node itself
 	input, err := i.(int)
 	if err != true{
 		return errors.New("Error: type assertion returned false")
@@ -74,8 +74,8 @@ func (head *node) Search(i interface{}) error{ // this should probably just retu
 	return errors.New("Something wrong with search function")
 }
 
-func (head *node) BFS(input int)error{
-	var queue []*node
+func (head *Node) BFS(input int)error{
+	var queue []*Node
 	if head == nil{
 		return errors.New("Entered an empty node")
 	}else if head.Priority == input{
@@ -93,8 +93,8 @@ func (head *node) BFS(input int)error{
 	return BFSHelper(input, queue)
 }
 
-func BFSHelper(input int, queue []*node) error{
-	var newQueue []*node
+func BFSHelper(input int, queue []*Node) error{
+	var newQueue []*Node
 	if len(queue) == 0{
 		return errors.New("couldnt find the node")
 	}
@@ -117,14 +117,14 @@ func BFSHelper(input int, queue []*node) error{
 	return BFSHelper(input, newQueue)
 }
 
-func (head *node) DFS(input int)error{
+func (head *Node) DFS(input int)error{
 	if head == nil{
 		return errors.New("Entered an empty node")
 	}else if head.Priority == input{
 		return nil
 	}
 
-	var stack []*node
+	var stack []*Node
 	stack = append(stack, head)
 	c := make(chan bool, 2) // using a buffered channel so we dont get more than two pushes through the channel
 
@@ -155,7 +155,7 @@ func (head *node) DFS(input int)error{
 
 }
 
-func DFSHelper(input int, stack []*node, done chan bool){
+func DFSHelper(input int, stack []*Node, done chan bool){
 	if stack[len(stack)-1].Priority == input{
 		done <- true
 		return
