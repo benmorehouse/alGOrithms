@@ -9,7 +9,7 @@ A handy library of Data structures and algorithms written in Go.
 - [Splay Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/splaytree)
 - [MinHeap](https://github.com/benmorehouse/alGOrithms/tree/master/trees/minHeap)
 - [MaxHeap](https://github.com/benmorehouse/alGOrithms/tree/master/trees/maxHeap)
-- [Trie](https://github.com/benmorehouse/alGOrithms/tree/master/trees/maxHeap)
+- [Trie](https://github.com/benmorehouse/alGOrithms/tree/master/trees/trie)
 
 # Lists
 

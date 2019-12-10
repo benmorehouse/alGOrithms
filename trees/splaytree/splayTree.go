@@ -4,6 +4,13 @@ import(
 	"math"
 )
 
+type node struct{
+	data int
+	parent* node
+	leftChild* node
+	rightChild* node
+}
+
 type splayTree struct{
 	BadInserts int // used to tell if we are having some sort of bad input
 	Steps int
