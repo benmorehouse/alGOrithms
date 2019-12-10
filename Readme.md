@@ -4,7 +4,7 @@ A handy library of Data structures and algorithms written in Go.
 
 # Trees
 
-- [Binary Search Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/binarytree)
+- [Binary Search Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/bst)
 - [AVL Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/avltree)
 - [Splay Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/splaytree)
 - [MinHeap](https://github.com/benmorehouse/alGOrithms/tree/master/trees/minHeap)
@@ -16,7 +16,7 @@ A handy library of Data structures and algorithms written in Go.
 - [Linked List](https://github.com/benmorehouse/alGOrithms/tree/master/lists/linkedlist)
 - [Doubly Linked List](https://github.com/benmorehouse/alGOrithms/tree/master/lists/doublyLinkedList)
 - [Stack](https://github.com/benmorehouse/alGOrithms/tree/master/lists/stack)
-- [Queue](https://github.com/benmorehouse/alGOrithms/blob/master/lists/queue)
+- [Queue](https://github.com/benmorehouse/alGOrithms/tree/master/lists/queue)
 
 # Sorting
 
