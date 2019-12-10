@@ -1,63 +1,68 @@
-package main
+package BST
 
 import(
 	"errors"
+	"fmt"
 )
 
 type node struct{
-	Data int
+	Priority int
 	Right *node
 	Left *node
 }
 
-func (head *node) Insert(input int)error{
+func (head *node) Insert(i interface{}) error{
+	input, err := i.(int) // type assertion for input into function..
+	if err != true{
+		return errors.New("Error: type assertion returned false")
+	}
+
+	newNode := node{
+		Priority: input,
+	}
+
 	if head == nil{
-		return errors.New("Root node is nil")
+		head = &newNode
+		return nil
 	}
 
-	if input < head.Data{
-		if head.Left != nil{
-			return head.Left.Insert(input)
-		}else{
-			var newNode = node{
-				Data: input,
-				Right: nil,
-				Left: nil,
+	currentNode := head
+	for currentNode != nil{
+		if input < currentNode.Priority{
+			if currentNode.Left == nil{
+				currentNode.Left = &newNode
+				return nil
 			}
-
-			head.Left = &newNode
-			return nil
-		}
-	}else if input >= head.Data{
-		if head.Right != nil{
-			return head.Right.Insert(input)
-		}else{
-			var newNode = node{
-				Data: input,
-				Right: nil,
-				Left: nil,
+			currentNode = currentNode.Left
+		}else if input > currentNode.Priority{
+			if currentNode.Right == nil{
+				currentNode.Right = &newNode
+				return nil
 			}
-
-			head.Right = &newNode
+			currentNode = currentNode.Right
+		}else{
 			return nil
 		}
 	}
-
-	return errors.New("Something wrong with Insert function")
+	return nil
 }
 
-func (head *node) Search(input int) error{
+func (head *node) Search(i interface{}) error{ // this should probably just return the node itself
+	input, err := i.(int)
+	if err != true{
+		return errors.New("Error: type assertion returned false")
+	}
 	if head == nil{
 		return errors.New("Root node is nil")
 	}
 
-	if input < head.Data{
+	if input < head.Priority{
 		if head.Left != nil{
 			return head.Left.Search(input)
 		}else{
 			return errors.New("Node doesnt exists")
 		}
-	}else if input > head.Data{
+	}else if input > head.Priority{
 		if head.Right != nil{
 			return head.Right.Search(input)
 		}else{
@@ -73,9 +78,8 @@ func (head *node) BFS(input int)error{
 	var queue []*node
 	if head == nil{
 		return errors.New("Entered an empty node")
-	}else if head.Data == input{
-		head.Data == input{
-		return nil
+	}else if head.Priority == input{
+		return errors.New("Entered an empty node")
 	}
 
 	if head.Right == nil{
@@ -95,7 +99,7 @@ func BFSHelper(input int, queue []*node) error{
 		return errors.New("couldnt find the node")
 	}
 	for i:=0;i<len(queue);i++{
-		if queue[i].Data == input{
+		if queue[i].Priority == input{
 			return nil
 		}else{
 			if queue[i].Right == nil && queue[i].Left == nil{
@@ -116,13 +120,13 @@ func BFSHelper(input int, queue []*node) error{
 func (head *node) DFS(input int)error{
 	if head == nil{
 		return errors.New("Entered an empty node")
-	}else if head.Data == input{
+	}else if head.Priority == input{
 		return nil
 	}
 
 	var stack []*node
 	stack = append(stack, head)
-	c := make[chan bool, 2] // using a buffered channel so we dont get more than two pushes through the channel
+	c := make(chan bool, 2) // using a buffered channel so we dont get more than two pushes through the channel
 
 	currentProcesses := 0
 	if head.Right != nil{
@@ -152,18 +156,13 @@ func (head *node) DFS(input int)error{
 }
 
 func DFSHelper(input int, stack []*node, done chan bool){
-	if stack[len(stack)-1].Data == input{
+	if stack[len(stack)-1].Priority == input{
 		done <- true
 		return
 	}else{
-
 		if stack[len(stack)-1].Left != nil{
 			stack = append(stack,stack[len(stack)-1].Left)
-			DFSHelper(input, stack
+			DFSHelper(input, stack,done)
 		}
-
-
-
-
-
+	}
 }

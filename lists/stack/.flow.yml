@@ -1,0 +1,12 @@
+---
+default:
+        cmd: | #/usr/bin/env bash
+
+
+                clear
+
+                cd ~/repositories/alGOrithms/lists/stack
+                go build
+                ./stack
+
+
