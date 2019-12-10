@@ -4,8 +4,8 @@ A handy library of Data structures and algorithms written in Go.
 
 # Trees
 
-- [Binary Search Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/binarytree-golang)
-- [AVL Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/avltree-golang)
+- [Binary Search Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/binarytree)
+- [AVL Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/avltree)
 - [Splay Tree](https://github.com/benmorehouse/alGOrithms/tree/master/trees/splaytree)
 - [MinHeap](https://github.com/benmorehouse/alGOrithms/tree/master/trees/minHeap)
 - [MaxHeap](https://github.com/benmorehouse/alGOrithms/tree/master/trees/maxHeap)
@@ -13,17 +13,17 @@ A handy library of Data structures and algorithms written in Go.
 
 # Lists
 
-- [Linked List](https://github.com/benmorehouse/alGOrithms/tree/master/lists/linkedlist-golang)
-- [Doubly Linked List](https://github.com/benmorehouse/alGOrithms/tree/master/lists/doublyLinkedList-golang)
+- [Linked List](https://github.com/benmorehouse/alGOrithms/tree/master/lists/linkedlist)
+- [Doubly Linked List](https://github.com/benmorehouse/alGOrithms/tree/master/lists/doublyLinkedList)
 - [Stack](https://github.com/benmorehouse/alGOrithms/tree/master/lists/stack)
 - [Queue](https://github.com/benmorehouse/alGOrithms/blob/master/lists/queue)
 
 # Sorting
 
+- Merge Sort -> soon to come
 - Bubble Sort -> soon to come
 - Selection Sort -> soon to come
 - Insertion Sort -> soon to come
-- Merge Sort -> soon to come
 - Quick Sort -> soon to come
 - Heap Sort -> soon to come
 
