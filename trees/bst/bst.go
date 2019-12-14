@@ -1,4 +1,4 @@
-package bst
+package main
 
 import(
 	"errors"
@@ -45,6 +45,98 @@ func (head *Node) Insert(i interface{}) error{
 		}
 	}
 	return nil
+}
+
+func (head *Node) Remove(i interface{}) error{
+	input , err := i.(int)
+	if err != true{
+		return errors.New("Error: type assertion returned false")
+	}
+
+	if head == nil{
+		return errors.New("Error: tree is empty nothing to delete")
+	}
+
+	// search through, find then delete
+	found := false
+	currentNode := head
+	for !found{
+		if currentNode.Priority == input{
+			break
+		}else if currentNode.Right == nil && currentNode.Left == nil{
+			return errors.New("Error: Node not found")
+		}else if input < currentNode.Priority{
+			if currentNode.Left == nil{
+				return errors.New("Error: Node not found")
+			}
+			currentNode = currentNode.Left
+		}else{
+			if currentNode.Right == nil{
+				return errors.New("Error: Node not found")
+			}
+			currentNode = currentNode.Right
+		}
+	}
+
+	// at this point currentNode is what we want
+	if currentNode.Right == nil && currentNode.Left == nil{
+		if currentNode == head{
+			head = nil
+		}else{
+
+		}
+	}else if currentNode.Right == nil && currentNode.Left != nil{
+		if currentNode == head{
+			currentNode.Priority = currentNode.Left.Priority
+			currentNode.Left = currentNode.Left.Left
+			currentNode.Right = currentNode.Left.Right
+			head = currentNode
+		}else{
+			currentNode.Priority = currentNode.Left.Priority
+			currentNode.Left = currentNode.Left.Left
+			currentNode.Right = currentNode.Left.Right
+		}
+	}else if currentNode.Right != nil && currentNode.Left == nil{
+		if currentNode == head{
+			currentNode.Priority = currentNode.Right.Priority
+			currentNode.Left = currentNode.Right.Left
+			currentNode.Right = currentNode.Right.Right
+			head = currentNode
+		}else{
+			currentNode.Priority = currentNode.Right.Priority
+			currentNode.Left = currentNode.Right.Left
+			currentNode.Right = currentNode.Right.Right
+		}
+	}else{
+		parent := currentNode.Right
+		predecessor := parent.Left
+		if predecessor != nil{
+			for predecessor.Left != nil{
+				parent = predecessor
+				predecessor = predecessor.Left
+			}
+			currentNode.Priority = predecessor.Priority
+			parent.Left = nil
+		}else{
+			fmt.Println("test")
+			currentNode.Priority = parent.Priority
+			currentNode.Right = nil
+		}
+	}
+	return nil
+}
+
+func (head *Node) Print(){
+	PrintHelper(head)
+}
+
+func PrintHelper(this *Node){
+	if this == nil{
+		return
+	}
+	PrintHelper(this.Left)
+	fmt.Print(this.Priority," ")
+	PrintHelper(this.Right)
 }
 
 func (head *Node) Search(i interface{}) error{ // this should probably just return the node itself

@@ -1,0 +1,10 @@
+---
+default:
+        cmd: | #/usr/bin/env bash
+
+
+                clear
+
+                cd ~/repositories/alGOrithms/trees/bst
+                go build
+                ./bst
