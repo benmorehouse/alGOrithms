@@ -14,6 +14,26 @@ type Heap struct{
 	Array []*Node //an array to hold its priorities
 }
 
+func NewHeap(nums ...interface{})(*Heap, error){
+	for _, val := range nums{
+		if _, ok := val.(int); ok != true{
+			return nil, errors.New("Error: Can only initialize heap with int values.")
+		}
+	}
+
+	h := Heap{
+		Array: nil,
+	}
+
+	for _, val := range nums{
+		if err := h.Insert(val); err != nil{
+			return nil, errors.New("Error: Can only initialize heap with int values.")
+		}
+	}
+
+	return &h, nil
+}
+
 func (this *Heap) Insert(i interface{}) error{
 	input, ok := i.(int) // type assertion for input into function..
 	if ok != true{
